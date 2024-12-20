@@ -38,6 +38,7 @@ RUN set -ex; \
     dpkg --add-architecture i386; \
     apt update; \
     apt install -y --no-install-recommends \
+        gdb \
         lib32gcc-s1; \
     # Install
     ## 直接设置linux平台将会导致找不到平台
@@ -53,6 +54,10 @@ RUN set -ex; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "${HOME}/.steam/sdk64/steamclient.so"; \
     ln -s "${STEAMCMDDIR}/steamcmd.sh" "${STEAMCMDDIR}/steam.sh"; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "/usr/lib/x86_64-linux-gnu/steamclient.so"; \
+    # 设置权限
+    chown abc:abc -R /app; \
+    chown abc:abc -R /opt/gameserver/scripts; \
+    chmod +x -R /opt/gameserver/scripts; \
     # 清理
     apt autoremove -y; \
     apt autoclean -y; \
@@ -60,10 +65,7 @@ RUN set -ex; \
     rm -rf \
         /var/lib/apt/lists/* \
         /var/tmp/* \
-        /tmp/*; \
-    # 设置权限
-    chown abc:abc -R /opt/gameserver/scripts; \
-    chmod +x -R /opt/gameserver/scripts
+        /tmp/*
 
 # 安装 Metamod:Source 和 Sourcemod
 COPY --from=download /tmp/gameserver/* /app/l4d2/left4dead2/
