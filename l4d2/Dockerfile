@@ -8,10 +8,10 @@ RUN curl -o /tmp/sourcemod.tar.gz https://sm.alliedmods.net/smdrop/1.12/$(curl -
 
 RUN set -ex; \
     mkdir -p /tmp/steamcmd; \
-    mkdir -p /tmp/gameserver; \
+    mkdir -p /tmp/gamemod; \
     tar -xzf /tmp/steamcmd.tar.gz -C /tmp/steamcmd; \
-    tar -xzf /tmp/mmsource.tar.gz -C /tmp/gameserver; \
-    tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gameserver
+    tar -xzf /tmp/mmsource.tar.gz -C /tmp/gamemod; \
+    tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gamemod
 
 # ---
 
@@ -68,6 +68,6 @@ RUN set -ex; \
         /tmp/*
 
 # 安装 Metamod:Source 和 Sourcemod
-COPY --from=download /tmp/gameserver/* /app/l4d2/left4dead2/
+COPY --from=download /tmp/gamemod/addons /tmp/gamemod/cfg /app/l4d2/left4dead2/
 
 ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
