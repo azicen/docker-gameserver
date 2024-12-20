@@ -73,7 +73,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./l4d2
-          file: ./Dockerfile
+          file: ./l4d2/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           platforms: |
             linux/amd64
