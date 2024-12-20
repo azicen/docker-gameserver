@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+
+# Load environment variables
+. /opt/gameserver/scripts/l4d2/env.sh
+
+chown abc:abc -R $HOME
