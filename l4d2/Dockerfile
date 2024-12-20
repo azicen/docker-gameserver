@@ -20,6 +20,8 @@ FROM ghcr.io/linuxserver/baseimage-debian:bookworm AS release
 ENV HOME=/app \
     STEAMCMDDIR=/app/steamcmd
 
+COPY rootfs/ /
+
 COPY --from=download /tmp/steamcmd /app/steamcmd
 
 RUN set -ex; \
@@ -51,18 +53,19 @@ RUN set -ex; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "${HOME}/.steam/sdk64/steamclient.so"; \
     ln -s "${STEAMCMDDIR}/steamcmd.sh" "${STEAMCMDDIR}/steam.sh"; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "/usr/lib/x86_64-linux-gnu/steamclient.so"; \
-    # Cleanup
+    # 清理
     apt autoremove -y; \
     apt autoclean -y; \
     apt clean; \
     rm -rf \
         /var/lib/apt/lists/* \
         /var/tmp/* \
-        /tmp/*
+        /tmp/*; \
+    # 设置权限
+    chown abc:abc -R /opt/gameserver/scripts; \
+    chmod +x -R /opt/gameserver/scripts
 
 # 安装 Metamod:Source 和 Sourcemod
 COPY --from=download /tmp/gameserver/* /app/l4d2/left4dead2/
-
-COPY rootfs/ /
 
 ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
