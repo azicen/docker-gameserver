@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM library/debian:12-slim AS download
+FROM --platform=$BUILDPLATFORM alpine/curl:latest AS download
 
 ADD https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz /tmp/steamcmd.tar.gz
 
