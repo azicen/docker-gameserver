@@ -63,6 +63,6 @@ RUN set -ex; \
 # 安装 Metamod:Source 和 Sourcemod
 COPY --from=download /tmp/gameserver/* /app/l4d2/left4dead2/
 
-COPY /rootfs/ /
+COPY rootfs/ /
 
 ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]

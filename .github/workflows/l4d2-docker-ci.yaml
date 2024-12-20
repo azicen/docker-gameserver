@@ -72,7 +72,7 @@ jobs:
       - name: 构建容器并推送注册表
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./l4d2
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           platforms: |
