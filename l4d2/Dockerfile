@@ -67,4 +67,4 @@ RUN set -ex; \
 # 安装 Metamod:Source 和 Sourcemod
 COPY --from=download /tmp/gamemod/addons /tmp/gamemod/cfg /app/l4d2/left4dead2/
 
-CMD [ "/opt/gameserver/scripts/l4d2/run.sh" ]
+ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
