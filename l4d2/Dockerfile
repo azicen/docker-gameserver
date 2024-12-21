@@ -62,4 +62,4 @@ RUN set -ex; \
         /var/tmp/* \
         /tmp/*
 
-ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
+CMD [ "/opt/gameserver/scripts/l4d2/run.sh" ]
