@@ -4,3 +4,5 @@
 . /opt/gameserver/scripts/l4d2/env.sh
 
 chown abc:abc -R $HOME
+chown abc:abc -R /opt/gameserver
+chmod +x -R /opt/gameserver

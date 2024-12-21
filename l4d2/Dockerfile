@@ -50,9 +50,7 @@ RUN set -ex; \
     tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gamemod; \
     cp -r /tmp/gamemod/* /app/l4d2/left4dead2/; \
     # 设置权限
-    chown abc:abc -R /app; \
-    chown abc:abc -R /opt/gameserver/scripts; \
-    chmod +x -R /opt/gameserver/scripts; \
+    chmod +x -R /etc/cont-init.d; \
     # 清理
     apt autoremove -y; \
     apt autoclean -y; \
