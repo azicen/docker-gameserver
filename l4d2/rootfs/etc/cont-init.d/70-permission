@@ -1,8 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-# Load environment variables
-. /opt/gameserver/scripts/l4d2/env.sh
+. /opt/gameserver/scripts/l4d2/libl4d2.sh
 
-chown abc:abc -R $HOME
-chown abc:abc -R /opt/gameserver
-chmod +x -R /opt/gameserver
+l4d2_init_permissions

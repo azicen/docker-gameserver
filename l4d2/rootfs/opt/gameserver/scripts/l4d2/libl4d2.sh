@@ -3,6 +3,12 @@
 # Load environment variables
 . /opt/gameserver/scripts/l4d2/env.sh
 
+l4d2_init_permissions() {
+    chown abc:abc -R $HOME
+    chown abc:abc -R /opt/gameserver
+    chmod +x -R /opt/gameserver
+}
+
 # 定义函数，返回需要增加的 flags
 l4d2_generate_flags() {
     local flags=()
