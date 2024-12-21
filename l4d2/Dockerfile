@@ -3,10 +3,6 @@ FROM ghcr.io/linuxserver/baseimage-debian:bookworm AS release
 ENV HOME=/app \
     STEAMCMDDIR=/app/steamcmd
 
-COPY rootfs/ /
-
-COPY --from=download /tmp/steamcmd /app/steamcmd
-
 RUN set -ex; \
     apt update; \
     apt install -y --no-install-recommends \
@@ -64,7 +60,6 @@ RUN set -ex; \
         /var/tmp/* \
         /tmp/*
 
-# 安装 Metamod:Source 和 Sourcemod
-COPY --from=download /tmp/gamemod/addons /tmp/gamemod/cfg /app/l4d2/left4dead2/
+COPY rootfs/ /
 
 ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
