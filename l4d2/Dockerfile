@@ -1,20 +1,3 @@
-FROM --platform=$BUILDPLATFORM alpine/curl:latest AS download
-
-ADD https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz /tmp/steamcmd.tar.gz
-
-RUN curl -o /tmp/mmsource.tar.gz https://mms.alliedmods.net/mmsdrop/1.11/$(curl -s https://mms.alliedmods.net/mmsdrop/1.11/mmsource-latest-linux)
-
-RUN curl -o /tmp/sourcemod.tar.gz https://sm.alliedmods.net/smdrop/1.12/$(curl -s https://sm.alliedmods.net/smdrop/1.12/sourcemod-latest-linux)
-
-RUN set -ex; \
-    mkdir -p /tmp/steamcmd; \
-    mkdir -p /tmp/gamemod; \
-    tar -xzf /tmp/steamcmd.tar.gz -C /tmp/steamcmd; \
-    tar -xzf /tmp/mmsource.tar.gz -C /tmp/gamemod; \
-    tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gamemod
-
-# ---
-
 FROM ghcr.io/linuxserver/baseimage-debian:bookworm AS release
 
 ENV HOME=/app \
@@ -40,6 +23,11 @@ RUN set -ex; \
     apt install -y --no-install-recommends \
         gdb \
         lib32gcc-s1; \
+    # Download and install steamcmd
+    curl -o /tmp/steamcmd.tar.gz \
+        https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz; \
+    mkdir -p /app/steamcmd; \
+    tar -xzf /tmp/steamcmd.tar.gz -C /app/steamcmd; \
     # Install
     ## 直接设置linux平台将会导致找不到平台
     ## 一个临时的解决方案是先设置为windows平台，然后再设置为linux平台
@@ -54,6 +42,15 @@ RUN set -ex; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "${HOME}/.steam/sdk64/steamclient.so"; \
     ln -s "${STEAMCMDDIR}/steamcmd.sh" "${STEAMCMDDIR}/steam.sh"; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "/usr/lib/x86_64-linux-gnu/steamclient.so"; \
+    # 安装 Metamod:Source 和 Sourcemod
+    curl -o /tmp/mmsource.tar.gz \
+        https://mms.alliedmods.net/mmsdrop/1.11/$(curl -s https://mms.alliedmods.net/mmsdrop/1.11/mmsource-latest-linux); \
+    curl -o /tmp/sourcemod.tar.gz \
+        https://sm.alliedmods.net/smdrop/1.12/$(curl -s https://sm.alliedmods.net/smdrop/1.12/sourcemod-latest-linux); \
+    mkdir -p /tmp/gamemod; \
+    tar -xzf /tmp/mmsource.tar.gz -C /tmp/gamemod; \
+    tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gamemod; \
+    cp -r /tmp/gamemod/* /app/l4d2/left4dead2/; \
     # 设置权限
     chown abc:abc -R /app; \
     chown abc:abc -R /opt/gameserver/scripts; \
@@ -70,4 +67,4 @@ RUN set -ex; \
 # 安装 Metamod:Source 和 Sourcemod
 COPY --from=download /tmp/gamemod/addons /tmp/gamemod/cfg /app/l4d2/left4dead2/
 
-ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
+CMD [ "/opt/gameserver/scripts/l4d2/run.sh" ]
