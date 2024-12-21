@@ -3,6 +3,8 @@ FROM ghcr.io/linuxserver/baseimage-debian:bookworm AS release
 ENV HOME=/app \
     STEAMCMDDIR=/app/steamcmd
 
+COPY rootfs/ /
+
 RUN set -ex; \
     apt update; \
     apt install -y --no-install-recommends \
@@ -59,7 +61,5 @@ RUN set -ex; \
         /var/lib/apt/lists/* \
         /var/tmp/* \
         /tmp/*
-
-COPY rootfs/ /
 
 ENTRYPOINT [ "/opt/gameserver/scripts/l4d2/entrypoint.sh" ]
