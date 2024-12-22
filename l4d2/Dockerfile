@@ -21,9 +21,14 @@ RUN set -ex; \
     apt install -y --no-install-recommends \
         gdb \
         lib32gcc-s1; \
-    # Download and install steamcmd
+    # Download
     curl -o /tmp/steamcmd.tar.gz \
         https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz; \
+    curl -o /tmp/mmsource.tar.gz \
+        https://mms.alliedmods.net/mmsdrop/1.11/$(curl -s https://mms.alliedmods.net/mmsdrop/1.11/mmsource-latest-linux); \
+    curl -o /tmp/sourcemod.tar.gz \
+        https://sm.alliedmods.net/smdrop/1.12/$(curl -s https://sm.alliedmods.net/smdrop/1.12/sourcemod-latest-linux); \
+    # Install steamcmd
     mkdir -p /app/steamcmd; \
     tar -xzf /tmp/steamcmd.tar.gz -C /app/steamcmd; \
     # Install
@@ -41,10 +46,6 @@ RUN set -ex; \
     ln -s "${STEAMCMDDIR}/steamcmd.sh" "${STEAMCMDDIR}/steam.sh"; \
     ln -s "${STEAMCMDDIR}/linux64/steamclient.so" "/usr/lib/x86_64-linux-gnu/steamclient.so"; \
     # 安装 Metamod:Source 和 Sourcemod
-    curl -o /tmp/mmsource.tar.gz \
-        https://mms.alliedmods.net/mmsdrop/1.11/$(curl -s https://mms.alliedmods.net/mmsdrop/1.11/mmsource-latest-linux); \
-    curl -o /tmp/sourcemod.tar.gz \
-        https://sm.alliedmods.net/smdrop/1.12/$(curl -s https://sm.alliedmods.net/smdrop/1.12/sourcemod-latest-linux); \
     mkdir -p /tmp/gamemod; \
     tar -xzf /tmp/mmsource.tar.gz -C /tmp/gamemod; \
     tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gamemod; \
