@@ -20,7 +20,8 @@ RUN set -ex; \
     apt update; \
     apt install -y --no-install-recommends \
         gdb \
-        lib32gcc-s1; \
+        lib32gcc-s1 \
+        lib32stdc++6; \
     # Download
     curl -o /tmp/steamcmd.tar.gz \
         https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz; \
