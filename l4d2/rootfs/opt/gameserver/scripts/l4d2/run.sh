@@ -7,7 +7,7 @@
 
 l4d2_init_permissions
 
-flags=( "-game" "left4dead2" "-console" "-secure" "-ip" "$L4D2_IP" "-port" "$L4D2_PORT" )
+flags=( "-game" "left4dead2" "-console" "-ip" "$L4D2_IP" "-port" "$L4D2_PORT" )
 
 read -r -a additional_flags <<< "$(l4d2_generate_flags)"
 flags+=("${additional_flags[@]}")

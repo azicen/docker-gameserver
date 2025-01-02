@@ -13,7 +13,8 @@ l4d2_init_permissions() {
 l4d2_generate_flags() {
     local flags=()
 
-    [[ "$L4D2_ENABLE_VAC" = false ]] && flags+=("-insecure")
+    [[ "$L4D2_ENABLE_SECURE" = true ]] && flags+=("-secure")
+    [[ "$L4D2_ENABLE_SECURE" = false ]] && flags+=("-insecure")
     [[ "$L4D2_DEBUG" = true ]] && flags+=("-debug")
 
     flags+=("+map" "$L4D2_MAP")
