@@ -29,8 +29,8 @@ RUN apk add --no-cache unzip
 
 COPY --from=download /app /app
 COPY --from=download /archive /archive
-COPY l4d2-campaign/addons /app/addons
-COPY l4d2-campaign/ems /app/ems
+COPY addons /app/addons
+COPY ems /app/ems
 
 RUN unzip /archive/l4dtoolz.zip -d /archive/l4dtoolz/addons
 RUN tar -xzvf /archive/sourcescramble_manager.tar.gz -C /archive/sourcescramble_manager
@@ -38,11 +38,11 @@ RUN tar -xzvf /archive/sourcescramble_manager.tar.gz -C /archive/sourcescramble_
 RUN cp -r /archive/l4dtoolz/addons/* /app/addons/
 RUN cp -r /archive/sourcescramble_manager/addons/* /app/addons/
 
-COPY l4d2-campaign/plugins/damage_control/* /app/addons/sourcemod/
-COPY l4d2-campaign/plugins/kill/* /app/addons/sourcemod/
-COPY l4d2-campaign/plugins/nextmap/* /app/addons/sourcemod/
-COPY l4d2-campaign/plugins/servername/* /app/addons/sourcemod/
-COPY l4d2-campaign/plugins/teleport/* /app/addons/sourcemod/
+COPY plugins/damage_control/* /app/addons/sourcemod/
+COPY plugins/kill/* /app/addons/sourcemod/
+COPY plugins/nextmap/* /app/addons/sourcemod/
+COPY plugins/servername/* /app/addons/sourcemod/
+COPY plugins/teleport/* /app/addons/sourcemod/
 
 # ---
 
