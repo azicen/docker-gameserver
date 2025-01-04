@@ -40,11 +40,14 @@ RUN tar -xzvf /archive/sourcescramble_manager.tar.gz -C /archive/sourcescramble_
 RUN cp -r /archive/l4dtoolz/addons/* /app/addons/
 RUN cp -r /archive/sourcescramble_manager/addons/* /app/addons/
 
-COPY plugins/damage_control/* /app/addons/sourcemod/
-COPY plugins/kill/* /app/addons/sourcemod/
-COPY plugins/nextmap/* /app/addons/sourcemod/
-COPY plugins/servername/* /app/addons/sourcemod/
-COPY plugins/teleport/* /app/addons/sourcemod/
+COPY plugins/damage_control/configs /app/addons/sourcemod/
+COPY plugins/damage_control/scripting /app/addons/sourcemod/
+COPY plugins/kill/scripting /app/addons/sourcemod/
+COPY plugins/nextmap/configs /app/addons/sourcemod/
+COPY plugins/nextmap/scripting /app/addons/sourcemod/
+COPY plugins/servername/configs /app/addons/sourcemod/
+COPY plugins/servername/scripting /app/addons/sourcemod/
+COPY plugins/teleport/scripting /app/addons/sourcemod/
 
 RUN cd /app && tree
 
