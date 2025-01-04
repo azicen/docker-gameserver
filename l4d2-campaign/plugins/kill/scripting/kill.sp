@@ -124,7 +124,7 @@ public Action CMDKill(int client, int args) {
 
     // 提示
     char name[PLAYER_NAME_MAX_LENGTH];
-    GetClientName(player, name, sizeof(name));
+    GetClientName(targets, name, sizeof(name));
     if (client == targets) {
         ReplyToCommand(client, "\x05[提示] 已自杀");
         PrintToChatAll("\x05[提示] \x04%s \x05自杀了", name);

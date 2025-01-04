@@ -63,7 +63,7 @@ public void TeleportToEntity(int targets, int destination) {
     }
     // 获取目的地坐标
     float dest[3];
-	GetClientAbsOrigin(destination, Origin);
+	GetClientAbsOrigin(destination, dest);
 
     // 传送
     TeleportEntity(targets, dest, NULL_VECTOR, NULL_VECTOR);
