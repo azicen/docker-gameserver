@@ -7,19 +7,19 @@ RUN mkdir -p /app/cfg/sourcemod
 
 # 下载
 # L4DToolZ
-RUN curl -o /archive/l4dtoolz.zip https://github.com/lakwsh/l4dtoolz/releases/download/2.4.0/l4dtoolz-11977260267.zip
+RUN curl -LJo /archive/l4dtoolz.zip https://github.com/lakwsh/l4dtoolz/releases/download/2.4.0/l4dtoolz-11977260267.zip
 # SMExt-SourceScramble
-RUN curl -o /archive/sourcescramble_manager.tar.gz https://github.com/nosoop/SMExt-SourceScramble/releases/download/0.7.1.4/package.tar.gz
+RUN curl -LJo /archive/sourcescramble_manager.tar.gz https://github.com/nosoop/SMExt-SourceScramble/releases/download/0.7.1.4/package.tar.gz
 # autoIS
-RUN curl -o /app/addons/sourcemod/plugins/autois.smx https://www.sourcemod.net/vbcompiler.php?file_id=137935
+RUN curl -LJo /app/addons/sourcemod/plugins/autois.smx https://www.sourcemod.net/vbcompiler.php?file_id=137935
 # Charger Collision patch
-RUN curl -o /app/addons/sourcemod/plugins/charger_collision_patch.smx https://github.com/LuxLuma/Left-4-fix/raw/refs/heads/master/left%204%20fix/charger/Charger_Collision_patch/plugins/Charger_Collision_patch.smx
-RUN curl -o /app/addons/sourcemod/gamedata/charger_collision_patch.txt https://github.com/LuxLuma/Left-4-fix/raw/refs/heads/master/left%204%20fix/charger/Charger_Collision_patch/gamedata/charger_collision_patch.txt
+RUN curl -LJo /app/addons/sourcemod/plugins/charger_collision_patch.smx https://github.com/LuxLuma/Left-4-fix/raw/refs/heads/master/left%204%20fix/charger/Charger_Collision_patch/plugins/Charger_Collision_patch.smx
+RUN curl -LJo /app/addons/sourcemod/gamedata/charger_collision_patch.txt https://github.com/LuxLuma/Left-4-fix/raw/refs/heads/master/left%204%20fix/charger/Charger_Collision_patch/gamedata/charger_collision_patch.txt
 # Survivor Legs
-RUN curl -o /app/addons/sourcemod/plugins/survivor_legs.smx https://www.sourcemod.net/vbcompiler.php?file_id=201116
+RUN curl -LJo /app/addons/sourcemod/plugins/survivor_legs.smx https://www.sourcemod.net/vbcompiler.php?file_id=201116
 # More item
-RUN curl -o /app/addons/sourcemod/plugins/more_item.smx https://github.com/wyxls/SourceModPlugins-L4D2/raw/refs/heads/master/l4d2_more_item/addons/sourcemod/plugins/l4d2_more_item.smx
-RUN curl -o /app/cfg/sourcemod/l4d2_more_item.cfg https://github.com/wyxls/SourceModPlugins-L4D2/raw/refs/heads/master/l4d2_more_item/cfg/sourcemod/l4d2_more_item.cfg
+RUN curl -LJo /app/addons/sourcemod/plugins/more_item.smx https://github.com/wyxls/SourceModPlugins-L4D2/raw/refs/heads/master/l4d2_more_item/addons/sourcemod/plugins/l4d2_more_item.smx
+RUN curl -LJo /app/cfg/sourcemod/l4d2_more_item.cfg https://github.com/wyxls/SourceModPlugins-L4D2/raw/refs/heads/master/l4d2_more_item/cfg/sourcemod/l4d2_more_item.cfg
 
 # ---
 
