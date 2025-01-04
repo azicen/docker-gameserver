@@ -4,8 +4,8 @@ on:
   workflow_dispatch: # 手动触发
 
 env:
-  REGISTRY: ${{ vars.L4D2_CAMPAIGN_REGISTRY }}
-  IMAGE: ${{ vars.L4D2_CAMPAIGN_IMAGE }}
+  REGISTRY: ${{ vars.L4D2_REGISTRY }}
+  IMAGE: ${{ vars.L4D2_IMAGE }}
 
 jobs:
   build-and-push:
