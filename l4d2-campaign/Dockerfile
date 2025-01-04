@@ -40,14 +40,11 @@ RUN tar -xzvf /archive/sourcescramble_manager.tar.gz -C /archive/sourcescramble_
 RUN cp -r /archive/l4dtoolz/addons/* /app/addons/
 RUN cp -r /archive/sourcescramble_manager/addons/* /app/addons/
 
-COPY plugins/damage_control/configs /app/addons/sourcemod/configs
-COPY plugins/damage_control/scripting /app/addons/sourcemod/scripting
-COPY plugins/kill/scripting /app/addons/sourcemod/scripting
-COPY plugins/nextmap/configs /app/addons/sourcemod/configs
-COPY plugins/nextmap/scripting /app/addons/sourcemod/scripting
-COPY plugins/servername/configs /app/addons/sourcemod/configs
-COPY plugins/servername/scripting /app/addons/sourcemod/scripting
-COPY plugins/teleport/scripting /app/addons/sourcemod/scripting
+COPY plugins/damage_control/ /app/addons/sourcemod/
+COPY plugins/kill/ /app/addons/sourcemod/
+COPY plugins/nextmap/ /app/addons/sourcemod/
+COPY plugins/servername/ /app/addons/sourcemod/
+COPY plugins/teleport/ /app/addons/sourcemod/
 
 RUN cd /app && tree
 
@@ -59,7 +56,7 @@ ENV HOME=/app \
     STEAMCMDDIR=/app/steamcmd
 
 COPY rootfs/ /
-COPY --from=aggregation /app/* /app/l4d2/left4dead2/
+COPY --from=aggregation /app/ /app/l4d2/left4dead2/
 
 RUN set -ex; \
     cd /app/l4d2/left4dead2/addons/sourcemod/scripting; \
