@@ -58,7 +58,8 @@ COPY --from=aggregation /app/* /app/l4d2/left4dead2/
 
 RUN set -ex; \
     cd /app/l4d2/left4dead2/addons/sourcemod/scripting; \
-    chmod 755 -R ./*; \
+    chmod 755 -R ./; \
+    ls -la ./; \
     ./compile.sh damage_control.sp; \
     ./compile.sh kill.sp; \
     ./compile.sh nextmap.sp; \
