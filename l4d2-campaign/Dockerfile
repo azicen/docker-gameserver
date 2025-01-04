@@ -25,7 +25,7 @@ RUN curl -LJo /app/cfg/sourcemod/l4d2_more_item.cfg https://github.com/wyxls/Sou
 
 FROM --platform=$BUILDPLATFORM library/alpine:3.20.3 AS aggregation
 
-RUN apk add --no-cache unzip
+RUN apk add --no-cache tree unzip
 
 COPY --from=download /app /app
 COPY --from=download /archive /archive
@@ -45,6 +45,8 @@ COPY plugins/kill/* /app/addons/sourcemod/
 COPY plugins/nextmap/* /app/addons/sourcemod/
 COPY plugins/servername/* /app/addons/sourcemod/
 COPY plugins/teleport/* /app/addons/sourcemod/
+
+RUN cd /app && tree
 
 # ---
 
