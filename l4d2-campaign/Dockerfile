@@ -32,7 +32,9 @@ COPY --from=download /archive /archive
 COPY addons /app/addons
 COPY ems /app/ems
 
+RUN mkdir -p /archive/l4dtoolz/addons
 RUN unzip /archive/l4dtoolz.zip -d /archive/l4dtoolz/addons
+RUN mkdir -p /archive/sourcescramble_manager
 RUN tar -xzvf /archive/sourcescramble_manager.tar.gz -C /archive/sourcescramble_manager
 
 RUN cp -r /archive/l4dtoolz/addons/* /app/addons/
