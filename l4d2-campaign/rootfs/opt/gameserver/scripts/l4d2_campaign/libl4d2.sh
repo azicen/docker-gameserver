@@ -14,5 +14,5 @@ l4d2_campaign_generate_flags() {
 
 l4d2_campaign_fill_config() {
     # 服务器名称
-    echo "$L4D2_SERVER_NAME" > /app/addons/sourcemod/configs/servername.cfg
+    echo "$L4D2_SERVER_NAME" > /app/l4d2/left4dead2/addons/sourcemod/configs/servername.cfg
 }

@@ -8,6 +8,7 @@
 . /opt/gameserver/scripts/l4d2_campaign/env.sh
 
 l4d2_fill_config
+
 l4d2_campaign_fill_config
 
 l4d2_init_permissions
