@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv bash
+
+./opt/gameserver/scripts/l4d2/run.sh

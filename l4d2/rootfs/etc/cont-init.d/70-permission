@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-. /opt/gameserver/scripts/l4d2/libl4d2.sh
+. /opt/gameserver/scripts/l4d2/env.sh
 
-l4d2_init_permissions
+chown abc:abc -R $HOME
+chown abc:abc -R /opt/gameserver
+chmod +x -R /opt/gameserver

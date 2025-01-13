@@ -62,5 +62,3 @@ RUN set -ex; \
         /var/lib/apt/lists/* \
         /var/tmp/* \
         /tmp/*
-
-CMD [ "/opt/gameserver/scripts/l4d2/run.sh" ]

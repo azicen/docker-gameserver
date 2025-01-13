@@ -105,5 +105,3 @@ RUN set -ex; \
     ./compile.sh teleport.sp; \
     cp -r ./compiled/* /app/l4d2/left4dead2/addons/sourcemod/plugins/; \
     chmod +x -R /opt/gameserver/scripts
-
-CMD [ "/opt/gameserver/scripts/l4d2_campaign/run.sh" ]

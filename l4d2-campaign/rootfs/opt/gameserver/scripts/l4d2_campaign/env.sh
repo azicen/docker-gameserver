@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 export HOME=${HOME:-"/app"}
 export STEAMCMDDIR=${STEAMCMDDIR:-"/app/steamcmd"}
