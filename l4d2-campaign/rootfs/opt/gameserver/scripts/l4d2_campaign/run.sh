@@ -7,6 +7,8 @@
 . /opt/gameserver/scripts/l4d2/env.sh
 . /opt/gameserver/scripts/l4d2_campaign/env.sh
 
+l4d2_fill_config
+
 l4d2_init_permissions
 
 flags=( "-game" "left4dead2" "-console" "-ip" "$L4D2_IP" "-port" "$L4D2_PORT" "+sv_setmax" "31" )
