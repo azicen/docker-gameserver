@@ -104,4 +104,5 @@ RUN set -ex; \
     ./compile.sh servername.sp; \
     ./compile.sh teleport.sp; \
     cp -r ./compiled/* /app/l4d2/left4dead2/addons/sourcemod/plugins/; \
+    chmod +x -R /etc/s6-overlay/s6-rc.d; \
     chmod +x -R /opt/gameserver/scripts
