@@ -12,7 +12,7 @@ l4d2_campaign_generate_flags() {
     echo "${flags[@]}"
 }
 
-l4d2_fill_config() {
+l4d2_campaign_fill_config() {
     # 服务器名称
     echo "$L4D2_SERVER_NAME" > /app/addons/sourcemod/configs/servername.cfg
 }

@@ -27,3 +27,20 @@ l4d2_generate_flags() {
 
     echo "${flags[@]}"
 }
+
+l4d2_fill_config() {
+    # 拥有所有权限的管理员
+    export CONFIG_FILE="/app/l4d2/left4dead2/addons/sourcemod/configs/admins_simple.ini"
+    # 清空文件
+    echo "" > "$CONFIG_FILE"
+    if [ -n "$L4D2_ADMIN_ALL_PERMISSIONS_USERS" ]; then
+        # 以逗号分割环境变量的值
+        IFS=',' read -ra ADMIN_USERS <<< "$L4D2_ADMIN_ALL_PERMISSIONS_USERS"
+
+        # 遍历每个用户并写入文件
+        for USER in "${ADMIN_USERS[@]}"; do
+            # 格式化并追加到文件中
+            echo "\"$USER\" \"99:z\"" >> "$CONFIG_FILE"
+        done
+    fi
+}
