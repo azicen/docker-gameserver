@@ -53,6 +53,7 @@ RUN set -ex; \
     cp -r /tmp/gamemod/* /app/l4d2/left4dead2/; \
     # 设置权限
     chmod +x -R /etc/cont-init.d; \
+    chmod +x -R /etc/s6-overlay/s6-rc.d; \
     chmod +x -R /opt/gameserver/scripts; \
     # 清理
     apt autoremove -y; \
