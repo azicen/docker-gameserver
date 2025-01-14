@@ -2,6 +2,10 @@
 
 . /opt/gameserver/scripts/l4d2/env.sh
 
+# 服务器名称
+echo "Set server name: $L4D2_SERVER_NAME"
+echo "$L4D2_SERVER_NAME" >/app/l4d2/left4dead2/addons/sourcemod/configs/servername.cfg
+
 # 拥有所有权限的管理员
 export CONFIG_FILE="/app/l4d2/left4dead2/addons/sourcemod/configs/admins_simple.ini"
 if [ -n "$L4D2_ADMIN_ALL_PERMISSIONS_USERS" ]; then
@@ -13,7 +17,7 @@ if [ -n "$L4D2_ADMIN_ALL_PERMISSIONS_USERS" ]; then
     # 遍历每个用户并写入文件
     for USER in "${ADMIN_USERS[@]}"; do
         # 格式化并追加到文件中
-        echo "Set admin $USER"
+        echo "Set admin: $USER"
         echo "\"$USER\" \"99:z\"" >>"$CONFIG_FILE"
     done
 fi

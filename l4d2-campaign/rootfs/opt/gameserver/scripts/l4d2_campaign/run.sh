@@ -3,7 +3,6 @@
 . /opt/gameserver/scripts/l4d2/libl4d2.sh
 . /opt/gameserver/scripts/l4d2_campaign/libl4d2.sh
 
-# Load environment variables
 . /opt/gameserver/scripts/l4d2/env.sh
 . /opt/gameserver/scripts/l4d2_campaign/env.sh
 

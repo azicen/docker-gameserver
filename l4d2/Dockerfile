@@ -1,9 +1,19 @@
+FROM --platform=$BUILDPLATFORM library/alpine:3.20.3 AS aggregation
+
+RUN mkdir -p /app/addons/sourcemod/
+
+COPY plugins/servername/ /app/addons/sourcemod/
+
+
+# ---
+
 FROM ghcr.io/linuxserver/baseimage-debian:bookworm AS release
 
 ENV HOME=/app \
     STEAMCMDDIR=/app/steamcmd
 
 COPY rootfs/ /
+COPY --from=aggregation /app/ /app/l4d2/left4dead2/
 
 RUN set -ex; \
     apt update; \
@@ -51,7 +61,14 @@ RUN set -ex; \
     tar -xzf /tmp/mmsource.tar.gz -C /tmp/gamemod; \
     tar -xzf /tmp/sourcemod.tar.gz -C /tmp/gamemod; \
     cp -r /tmp/gamemod/* /app/l4d2/left4dead2/; \
+    # 编译插件
+    cd /app/l4d2/left4dead2/addons/sourcemod/scripting; \
+    chmod 755 -R ./; \
+    ls -la ./; \
+    ./compile.sh servername.sp; \
+    cp -r ./compiled/* /app/l4d2/left4dead2/addons/sourcemod/plugins/; \
     # 设置权限
+    chown -R abc:abc /app; \
     chmod +x -R /etc/cont-init.d; \
     chmod +x -R /etc/s6-overlay/s6-rc.d; \
     chmod +x -R /opt/gameserver/scripts; \

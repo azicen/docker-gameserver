@@ -79,7 +79,6 @@ RUN cp -r /archive/sourcescramble_manager/addons/* /app/addons/
 COPY plugins/damage_control/ /app/addons/sourcemod/
 COPY plugins/kill/ /app/addons/sourcemod/
 COPY plugins/nextmap/ /app/addons/sourcemod/
-COPY plugins/servername/ /app/addons/sourcemod/
 COPY plugins/teleport/ /app/addons/sourcemod/
 
 RUN cd /app && tree
@@ -95,14 +94,16 @@ COPY rootfs/ /
 COPY --from=aggregation /app/ /app/l4d2/left4dead2/
 
 RUN set -ex; \
+    # 编译插件
     cd /app/l4d2/left4dead2/addons/sourcemod/scripting; \
     chmod 755 -R ./; \
     ls -la ./; \
     ./compile.sh damage_control.sp; \
     ./compile.sh kill.sp; \
     ./compile.sh nextmap.sp; \
-    ./compile.sh servername.sp; \
     ./compile.sh teleport.sp; \
     cp -r ./compiled/* /app/l4d2/left4dead2/addons/sourcemod/plugins/; \
+    # 设置权限
+    chown -R abc:abc /app; \
     chmod +x -R /etc/s6-overlay/s6-rc.d; \
     chmod +x -R /opt/gameserver/scripts
