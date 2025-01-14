@@ -14,10 +14,10 @@ RUN mkdir -p /app/cfg/sourcemod
 RUN curl -LJo /archive/l4dtoolz.zip "https://github.com/lakwsh/l4dtoolz/releases/download/2.4.0/l4dtoolz-11977260267.zip"
 
 # Actions
-RUN wget -O /archive/actions.ext.zip "https://forums.alliedmods.net/attachment.php?attachmentid=204593"
+COPY archive/actions.ext.zip /archive/actions.ext.zip
 
 # Left 4 DHooks Direct
-RUN wget -O /archive/left4dhooks.zip "https://forums.alliedmods.net/attachment.php?attachmentid=195507"
+COPY archive/left4dhooks.zip /archive/left4dhooks.zip
 
 # SMExt-SourceScramble
 RUN curl -LJo /archive/sourcescramble_manager.tar.gz "https://github.com/nosoop/SMExt-SourceScramble/releases/download/0.7.1.4/package.tar.gz"
