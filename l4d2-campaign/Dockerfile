@@ -65,8 +65,8 @@ RUN apk add --no-cache tree unzip
 
 COPY --from=download /app /app
 COPY --from=download /archive /archive
-COPY addons /app/addons
-COPY ems /app/ems
+
+RUN mkdir -p /app/addons/sourcemod
 
 RUN mkdir -p /archive/l4dtoolz/addons
 RUN unzip /archive/l4dtoolz.zip -d /archive/l4dtoolz/addons
