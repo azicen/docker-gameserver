@@ -11,6 +11,12 @@ RUN mkdir -p /app/cfg/sourcemod
 # L4DToolZ
 RUN curl -LJo /archive/l4dtoolz.zip "https://github.com/lakwsh/l4dtoolz/releases/download/2.4.0/l4dtoolz-11977260267.zip"
 
+# Actions
+RUN curl -LJo /archive/actions.ext.zip "https://forums.alliedmods.net/attachment.php?attachmentid=204593&d=1718157838"
+
+# Left 4 DHooks Direct
+RUN curl -LJo /archive/left4dhooks.zip "https://forums.alliedmods.net/attachment.php?attachmentid=195507&d=1736003196"
+
 # SMExt-SourceScramble
 RUN curl -LJo /archive/sourcescramble_manager.tar.gz "https://github.com/nosoop/SMExt-SourceScramble/releases/download/0.7.1.4/package.tar.gz"
 
@@ -31,6 +37,9 @@ RUN curl -LJo /app/addons/sourcemod/gamedata/command_buffer.games.txt "https://f
 # Drop Secondary
 RUN curl -LJo /app/addons/sourcemod/plugins/drop_secondary.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/drop_secondary/plugins/drop_secondary.smx"
 
+# Heartbeat (Revive Fix - Post Revive Options)
+RUN curl -LJo /app/addons/sourcemod/plugins/heartbeat.smx "https://github.com/fbef0102/L4D1_2-Plugins/raw/refs/heads/master/l4d_heartbeat/plugins/l4d_heartbeat.smx"
+
 # Item Hint
 RUN curl -LJo /app/addons/sourcemod/plugins/item_hint.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/l4d2_item_hint/plugins/l4d2_item_hint.smx"
 RUN curl -LJo /app/addons/sourcemod/gamedata/l4d2_item_hint.txt "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/l4d2_item_hint/gamedata/l4d2_item_hint.txt"
@@ -43,8 +52,15 @@ RUN curl -LJo /app/addons/sourcemod/gamedata/lfd_both_fixUpgradePack.txt "https:
 # Rescue glow
 RUN curl -LJo /app/addons/sourcemod/plugins/rescue_glow.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/rescue_glow/plugins/rescue_glow.smx"
 
+# Show Mic
+RUN curl -LJo /app/addons/sourcemod/plugins/show_mic.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/show_mic/plugins/show_mic.smx"
+
 # Survivor Legs
 RUN curl -LJo /app/addons/sourcemod/plugins/survivor_legs.smx "https://www.sourcemod.net/vbcompiler.php?file_id=201116"
+
+# Use Priority Patch
+RUN curl -LJo /app/addons/sourcemod/plugins/use_priority.smx "https://www.sourcemod.net/vbcompiler.php?file_id=188692"
+RUN curl -LJo /app/addons/sourcemod/gamedata/l4d_use_priority.txt "https://forums.alliedmods.net/attachment.php?attachmentid=183778&d=1714942373"
 
 # Melee In The Saferoom
 RUN curl -LJo /app/addons/sourcemod/plugins/melee_in_the_saferoom.smx "https://www.sourcemod.net/vbcompiler.php?file_id=184014"
@@ -68,13 +84,23 @@ COPY --from=download /archive /archive
 
 RUN mkdir -p /app/addons/sourcemod
 
+
 RUN mkdir -p /archive/l4dtoolz/addons
 RUN unzip /archive/l4dtoolz.zip -d /archive/l4dtoolz/addons
+RUN cp -r /archive/l4dtoolz/addons/* /app/addons/
+
+RUN unzip /archive/actions.ext.zip -d /archive
+RUN cp -r /archive/actions.ext/* /app/addons/sourcemod/
+
+# Left 4 DHooks Direct
+RUN mkdir -p /archive/left4dhooks/addons
+RUN unzip /archive/left4dhooks.zip -d /archive/left4dhooks/addons
+RUN cp -r /archive/left4dhooks/addons/* /app/addons/
+
 RUN mkdir -p /archive/sourcescramble_manager
 RUN tar -xzvf /archive/sourcescramble_manager.tar.gz -C /archive/sourcescramble_manager
-
-RUN cp -r /archive/l4dtoolz/addons/* /app/addons/
 RUN cp -r /archive/sourcescramble_manager/addons/* /app/addons/
+
 
 COPY plugins/damage_control/ /app/addons/sourcemod/
 COPY plugins/kill/ /app/addons/sourcemod/
