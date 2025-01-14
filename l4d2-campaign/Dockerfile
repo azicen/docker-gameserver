@@ -12,10 +12,10 @@ RUN mkdir -p /app/cfg/sourcemod
 RUN curl -LJo /archive/l4dtoolz.zip "https://github.com/lakwsh/l4dtoolz/releases/download/2.4.0/l4dtoolz-11977260267.zip"
 
 # Actions
-RUN curl -LJo /archive/actions.ext.zip "https://forums.alliedmods.net/attachment.php?attachmentid=204593&d=1718157838"
+RUN curl -LJo /archive/actions.ext.zip "https://forums.alliedmods.net/attachment.php?attachmentid=204593"
 
 # Left 4 DHooks Direct
-RUN curl -LJo /archive/left4dhooks.zip "https://forums.alliedmods.net/attachment.php?attachmentid=195507&d=1736003196"
+RUN curl -LJo /archive/left4dhooks.zip "https://forums.alliedmods.net/attachment.php?attachmentid=195507"
 
 # SMExt-SourceScramble
 RUN curl -LJo /archive/sourcescramble_manager.tar.gz "https://github.com/nosoop/SMExt-SourceScramble/releases/download/0.7.1.4/package.tar.gz"
@@ -32,7 +32,7 @@ RUN curl -LJo /app/addons/sourcemod/plugins/clear_dead_body.smx "https://github.
 
 # Command and ConVar - Buffer Overflow Fixer
 RUN curl -LJo /app/addons/sourcemod/plugins/command_buffer.smx "https://www.sourcemod.net/vbcompiler.php?file_id=170776"
-RUN curl -LJo /app/addons/sourcemod/gamedata/command_buffer.games.txt "https://forums.alliedmods.net/attachment.php?attachmentid=170774&d=1722845109"
+RUN curl -LJo /app/addons/sourcemod/gamedata/command_buffer.games.txt "https://forums.alliedmods.net/attachment.php?attachmentid=170774"
 
 # Drop Secondary
 RUN curl -LJo /app/addons/sourcemod/plugins/drop_secondary.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/drop_secondary/plugins/drop_secondary.smx"
@@ -60,7 +60,7 @@ RUN curl -LJo /app/addons/sourcemod/plugins/survivor_legs.smx "https://www.sourc
 
 # Use Priority Patch
 RUN curl -LJo /app/addons/sourcemod/plugins/use_priority.smx "https://www.sourcemod.net/vbcompiler.php?file_id=188692"
-RUN curl -LJo /app/addons/sourcemod/gamedata/l4d_use_priority.txt "https://forums.alliedmods.net/attachment.php?attachmentid=183778&d=1714942373"
+RUN curl -LJo /app/addons/sourcemod/gamedata/l4d_use_priority.txt "https://forums.alliedmods.net/attachment.php?attachmentid=183778"
 
 # Melee In The Saferoom
 RUN curl -LJo /app/addons/sourcemod/plugins/melee_in_the_saferoom.smx "https://www.sourcemod.net/vbcompiler.php?file_id=184014"
