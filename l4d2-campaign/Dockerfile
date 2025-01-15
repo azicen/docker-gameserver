@@ -36,16 +36,30 @@ RUN curl -LJo /app/addons/sourcemod/plugins/clear_dead_body.smx "https://github.
 RUN curl -LJo /app/addons/sourcemod/plugins/command_buffer.smx "https://www.sourcemod.net/vbcompiler.php?file_id=170776"
 RUN curl -LJo /app/addons/sourcemod/gamedata/command_buffer.games.txt "https://github.com/SilvDev/Command_Buffer/raw/refs/heads/main/gamedata/command_buffer.games.txt"
 
+# Coop Markers - Flow Distance
+RUN curl -LJo /app/addons/sourcemod/plugins/coop_markers.smx "https://www.sourcemod.net/vbcompiler.php?file_id=180562"
+RUN curl -LJo /app/addons/sourcemod/gamedata/l4d_coop_markers.txt "https://github.com/SilvDev/Coop_Markers-Flow_Distance/raw/refs/heads/main/gamedata/l4d_coop_markers.txt"
+RUN curl -LJo /app/addons/sourcemod/translations/coop_markers.phrases.txt "https://github.com/SilvDev/Coop_Markers-Flow_Distance/raw/refs/heads/main/translations/coop_markers.phrases.txt"
+
 # Drop Secondary
 RUN curl -LJo /app/addons/sourcemod/plugins/drop_secondary.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/drop_secondary/plugins/drop_secondary.smx"
 
 # Heartbeat (Revive Fix - Post Revive Options)
 RUN curl -LJo /app/addons/sourcemod/plugins/heartbeat.smx "https://github.com/fbef0102/L4D1_2-Plugins/raw/refs/heads/master/l4d_heartbeat/plugins/l4d_heartbeat.smx"
 
+# Item Give
+RUN curl -LJo /app/addons/sourcemod/plugins/item_give.smx "https://github.com/wyxls/SourceModPlugins-L4D2/raw/refs/heads/master/item_give/addons/sourcemod/plugins/item_give.smx"
+
 # Item Hint
 RUN curl -LJo /app/addons/sourcemod/plugins/item_hint.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/l4d2_item_hint/plugins/l4d2_item_hint.smx"
 RUN curl -LJo /app/addons/sourcemod/gamedata/l4d2_item_hint.txt "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/l4d2_item_hint/gamedata/l4d2_item_hint.txt"
 RUN curl -LJo /app/addons/sourcemod/translations/l4d2_item_hint.phrases.txt "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/l4d2_item_hint/translations/l4d2_item_hint.phrases.txt"
+
+# Incapped Magnum
+RUN curl -LJo /app/addons/sourcemod/plugins/incap_magnum.smx "https://www.sourcemod.net/vbcompiler.php?file_id=62363"
+
+# Infinite Ammo
+RUN curl -LJo /app/addons/sourcemod/plugins/iiammo.smx "https://www.sourcemod.net/vbcompiler.php?file_id=172742"
 
 # Fixes upgrade packs pickup bug
 RUN curl -LJo /app/addons/sourcemod/plugins/lfd_both_fixUpgradePack.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/lfd_both_fixUpgradePack/plugins/lfd_both_fixUpgradePack.smx"
