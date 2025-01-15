@@ -34,7 +34,7 @@ RUN curl -LJo /app/addons/sourcemod/plugins/clear_dead_body.smx "https://github.
 
 # Command and ConVar - Buffer Overflow Fixer
 RUN curl -LJo /app/addons/sourcemod/plugins/command_buffer.smx "https://www.sourcemod.net/vbcompiler.php?file_id=170776"
-RUN curl -LJo /app/addons/sourcemod/gamedata/command_buffer.games.txt "https://forums.alliedmods.net/attachment.php?attachmentid=170774"
+RUN curl -LJo /app/addons/sourcemod/gamedata/command_buffer.games.txt "https://github.com/SilvDev/Command_Buffer/raw/refs/heads/main/gamedata/command_buffer.games.txt"
 
 # Drop Secondary
 RUN curl -LJo /app/addons/sourcemod/plugins/drop_secondary.smx "https://github.com/fbef0102/L4D2-Plugins/raw/refs/heads/master/drop_secondary/plugins/drop_secondary.smx"
@@ -62,7 +62,7 @@ RUN curl -LJo /app/addons/sourcemod/plugins/survivor_legs.smx "https://www.sourc
 
 # Use Priority Patch
 RUN curl -LJo /app/addons/sourcemod/plugins/use_priority.smx "https://www.sourcemod.net/vbcompiler.php?file_id=188692"
-RUN curl -LJo /app/addons/sourcemod/gamedata/l4d_use_priority.txt "https://forums.alliedmods.net/attachment.php?attachmentid=183778"
+RUN curl -LJo /app/addons/sourcemod/gamedata/l4d_use_priority.txt "https://github.com/SilvDev/Use_Priority_Patch/raw/refs/heads/main/gamedata/l4d_use_priority.txt"
 
 # Melee In The Saferoom
 RUN curl -LJo /app/addons/sourcemod/plugins/melee_in_the_saferoom.smx "https://www.sourcemod.net/vbcompiler.php?file_id=184014"
