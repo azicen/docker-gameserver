@@ -31,3 +31,8 @@ export L4D2_ENABLE_CHEATS=${L4D2_ENABLE_CHEATS:-false}
 
 # 启用游戏内语音
 export L4D2_ENABLE_ALLTALK=${L4D2_ENABLE_ALLTALK:-true}
+
+# 默认游戏难度
+# 选项:
+#   Easy: 简单, Normal: 普通, Hard: 困难, Impossible: 专家
+export L4D2_DIFFICULTY=${L4D2_DIFFICULTY:-"Normal"}

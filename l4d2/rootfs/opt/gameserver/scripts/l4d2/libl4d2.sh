@@ -35,6 +35,16 @@ l4d2_generate_flags() {
     [[ "$L4D2_ENABLE_ALLTALK" = true ]] && flags+=("1")
     [[ "$L4D2_ENABLE_ALLTALK" = false ]] && flags+=("0")
 
+    # 游戏难度
+    flags+=("+z_difficulty")
+    case "$L4D2_DIFFICULTY" in
+        Easy)       flags+=("Easy") ;;
+        Normal)     flags+=("Normal") ;;
+        Hard)       flags+=("Hard") ;;
+        Impossible) flags+=("Impossible") ;;
+        *)          flags+=("Normal") ;; # 默认值
+    esac
+
     # 额外参数
     if [[ -n "${L4D2_EXTRA_FLAGS:-}" ]]; then
         read -r -a extra_flags <<<"$L4D2_EXTRA_FLAGS"
